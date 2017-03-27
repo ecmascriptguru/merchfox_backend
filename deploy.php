@@ -6,20 +6,36 @@ require 'recipe/laravel.php';
 
 set('ssh_type', 'native');
 set('ssh_multiplexing', true);
+set('branch', 'master');
+set('keep_releases', 5);
 
-set('repository', 'git@domain.com:username/repository.git');
+set('repository', 'git@github.com:ecmascriptguru/word_fox_backend.git');
 
-add('shared_files', []);
-add('shared_dirs', []);
+add('shared_files', [
+	'.env'
+]);
+add('shared_dirs', [
+	'storage'
+]);
 
-add('writable_dirs', []);
+add('writable_dirs', [
+	'bootstrap/cache',
+    'storage',
+    'storage/app',
+    'storage/app/public',
+    'storage/framework',
+    'storage/framework/cache',
+    'storage/framework/sessions',
+    'storage/framework/views',
+    'storage/logs',
+]);
 
 // Servers
 
-server('production', 'domain.com')
-    ->user('username')
-    ->identityFile()
-    ->set('deploy_path', '/var/www/domain.com')
+server('production', 'ec2-52-23-176-83.compute-1.amazonaws.com')
+    ->user('ubuntu')
+    ->identityFile('')
+    ->set('deploy_path', '/var/www/html')
     ->pty(true);
 
 
