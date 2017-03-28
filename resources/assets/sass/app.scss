@@ -7,3 +7,10 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+table#products-table td {
+	vertical-align: middle;
+}
+img.product-image {
+    width: 110px;
+}

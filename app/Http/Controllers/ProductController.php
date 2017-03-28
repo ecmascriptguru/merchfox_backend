@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -15,11 +16,9 @@ class ProductController extends Controller
 	 */
 	public function index(Request $request)
 	{
-		$products = Product::all();
-		return Response()->json([
-			'status' => true,
-			'data' => $products
-		]);
+		// $products = DB::table('products')->paginate(15);
+		
+		// return view('product.index', ['products' => $products]);
 	}
 
 	/**
