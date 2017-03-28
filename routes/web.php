@@ -18,4 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-Route::get('profile', ['uses' =>'Auth\ProfileController@update', 'as' => 'profile']);
+
+Route::get('profile', [
+	'uses' =>'Auth\ProfileController@index',
+	'as' => 'profile'
+]);
+
+Route::post('profile', [
+	'uses' =>'Auth\ProfileController@update',
+	'as' => 'profile'
+]);
