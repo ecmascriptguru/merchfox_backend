@@ -7,15 +7,25 @@
             <div class="panel-heading">You can see products pulled from Amazon.</div>
 
             <div class="panel-body">
-                <table>
+                <table id=" -table" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th>Product Name</th>
                             <th>Image</th>
+                            <th>Title</th>
+                            <th>Keywords</th>
+                            <th>Price</th>
+                            <th>BSR</th>
+                            <th>bsr</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
+                            <td>Hehe...</td>
+                            <td>Hehe...</td>
+                            <td>Hehe...</td>
+                            <td>Hehe...</td>
+                            <td>Hehe...</td>
                             <td>Hehe...</td>
                             <td>Hehe...</td>
                         </tr>

@@ -54,11 +54,14 @@ class ProductController extends Controller
 			if (isset($product['bottom_bsr'])) {
 				$tempBottomBSR = $product['bottom_bsr'];
 			}
+			if (isset($product['brand_img_url'])) {
+				$brand_img_url = $product['brand_img_url'];
+			}
 			array_push($query, array(
 					'title' => $product['title'],
 					'link' => $product['link'],
 					'img_url' => $product['img_url'],
-					'brand_img_url' => $product['brand_img_url'],
+					'brand_img_url' => $brand_img_url,
 					'price' => $product['price'],
 					'top_bsr' => $tempTopBSR,//$product['top_bsr'],
 					'bottom_bsr' => $tempBottomBSR, //$product['bottom_bsr'],
