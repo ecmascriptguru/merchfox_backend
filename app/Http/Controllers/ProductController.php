@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class ProductController extends Controller
 {	
@@ -12,10 +13,13 @@ class ProductController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function index()
+	public function index(Request $request)
 	{
-		//
-		echo "Hello";
+		$products = Product::all();
+		return Response()->json([
+			'status' => true,
+			'data' => $products
+		]);
 	}
 
 	/**
@@ -40,7 +44,31 @@ class ProductController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		//
+		$products = $request->all();
+		$query = array();
+		// var_dump($products[0]['top_bsr']);exit;
+		foreach ($products as $key => $product) {
+			if (isset($product['top_bsr'])) {
+				$tempTopBSR = $product['top_bsr'];
+			}
+			if (isset($product['bottom_bsr'])) {
+				$tempBottomBSR = $product['bottom_bsr'];
+			}
+			array_push($query, array(
+					'title' => $product['title'],
+					'link' => $product['link'],
+					'img_url' => $product['img_url'],
+					'brand_img_url' => $product['brand_img_url'],
+					'price' => $product['price'],
+					'top_bsr' => $tempTopBSR,//$product['top_bsr'],
+					'bottom_bsr' => $tempBottomBSR, //$product['bottom_bsr'],
+					'keywords' => $product['keywords']
+				));
+		}
+		$status = Product::insert($query);
+		return Response()->json([
+				'status' => $status
+			]);
 	}
 
 	/**
