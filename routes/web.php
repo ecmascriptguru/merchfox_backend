@@ -28,3 +28,19 @@ Route::post('profile', [
 	'uses' =>'Auth\ProfileController@update',
 	'as' => 'profile'
 ]);
+
+
+Route::get('datatables', [
+	'uses' => 'DatatablesController@getIndex',
+	'as' => 'datatables'
+]);
+
+Route::get('datatables.data', [
+	'uses' => 'DatatablesController@anyData',
+	'as' => 'datatables.data'
+]);
+
+// Route::get('datatables', 'DatatablesController', [
+//     'anyData'  => 'datatables.data',
+//     'getIndex' => 'datatables',
+// ]);

@@ -46,6 +46,7 @@ class ProductController extends Controller
 	{
 		$products = $request->all();
 		$query = array();
+		$tempTopBSR = $tempBottomBSR = $brand_img_url = null;
 		// var_dump($products[0]['top_bsr']);exit;
 		foreach ($products as $key => $product) {
 			if (isset($product['top_bsr'])) {
