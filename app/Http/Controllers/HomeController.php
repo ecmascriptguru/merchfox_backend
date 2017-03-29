@@ -28,4 +28,12 @@ class HomeController extends Controller
         $products = Product::paginate(10);
         return view('home', ['products' => $products]);
     }
+
+    /**
+     *
+     */
+    public function truncate() {
+        $status = DB::table('products')->truncate();
+        return redirect()->route('home');
+    }
 }

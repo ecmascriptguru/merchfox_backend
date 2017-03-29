@@ -28,3 +28,8 @@ Route::post('profile', [
 	'uses' =>'Auth\ProfileController@update',
 	'as' => 'profile'
 ]);
+
+Route::post('/truncate', [
+	'uses' => 'HomeController@truncate',
+	'as' => 'truncate'
+]);
