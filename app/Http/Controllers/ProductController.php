@@ -16,11 +16,10 @@ class ProductController extends Controller
 	 */
 	public function index(Request $request)
 	{
-		$products = DB::table('products')->paginate(15);
-		
+		$products = Product::paginate(15);
 		return Response()->json([
 			'status' => true,
-			'products' => $products
+			'data' => $products
 		]);
 	}
 
@@ -48,6 +47,8 @@ class ProductController extends Controller
 	{
 		$products = $request->all();
 		$query = array();
+		$tempTopBSR = $tempBottomBSR = $brand_img_url = null;
+		$img_url = "";
 		// var_dump($products[0]['top_bsr']);exit;
 		foreach ($products as $key => $product) {
 			if (isset($product['top_bsr'])) {
@@ -58,6 +59,9 @@ class ProductController extends Controller
 			}
 			if (isset($product['brand_img_url'])) {
 				$brand_img_url = $product['brand_img_url'];
+			}
+			if (isset($product['img_url'])) {
+				$img_url = $product['img_url'];
 			}
 			array_push($query, array(
 					'title' => $product['title'],
@@ -72,8 +76,8 @@ class ProductController extends Controller
 		}
 		$status = Product::insert($query);
 		return Response()->json([
-				'status' => $status
-			]);
+			'status' => $status
+		]);
 	}
 
 	/**
