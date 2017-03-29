@@ -28,7 +28,7 @@
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->top_bsr }}</td>
                             <td>{{ $product->bottom_bsr }}</td>
-                            <td><a href="{{ $product->link }}" target="_newTab"><button class="btn btn-success">Remove</button></a></td>
+                            <td><a href="{{ $product->link }}" target="_newTab"><button class="btn btn-success">Check</button></a></td>
                         </tr>
 						@endforeach
 					</tbody>
