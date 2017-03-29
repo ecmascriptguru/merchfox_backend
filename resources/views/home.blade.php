@@ -33,6 +33,9 @@
 						@endforeach
 					</tbody>
 				</table>
+				<div class="pagination-container" style="float:right;">
+					{{ $products->links() }}
+				</div>
 			</div>
 		</div>
 	</div>
