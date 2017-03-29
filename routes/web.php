@@ -17,7 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('home', [
+	'uses' => 'HomeController@index',
+	'as' => 'home'
+]);
 
 Route::get('profile', [
 	'uses' =>'Auth\ProfileController@index',
@@ -29,7 +32,7 @@ Route::post('profile', [
 	'as' => 'profile'
 ]);
 
-Route::post('/truncate', [
+Route::post('truncate', [
 	'uses' => 'HomeController@truncate',
 	'as' => 'truncate'
 ]);

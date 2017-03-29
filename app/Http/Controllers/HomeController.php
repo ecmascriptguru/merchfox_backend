@@ -30,7 +30,8 @@ class HomeController extends Controller
     }
 
     /**
-     *
+     * Truncate the products table
+     * @return \Illuminate\Http\Response
      */
     public function truncate() {
         $status = DB::table('products')->truncate();

@@ -44,6 +44,9 @@
 						<button id="btn-truncate" data-href="{{ route('truncate') }}" class="form-control btn btn-danger">Truncate Database</button>
 					</div>
 				</div>
+                <form action="{{ route('truncate') }}" method="post" id="frm-truncate">
+                    {{ csrf_field() }}
+                </form>
 			</div>
 		</div>
 	</div>

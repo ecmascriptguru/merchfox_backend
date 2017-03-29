@@ -13,8 +13,19 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+// Vue.component('example', require('./components/Example.vue'));
 
-const app = new Vue({
-    el: '#app'
-});
+// const app = new Vue({
+//     el: '#app'
+// });
+
+
+(function() {
+	$("#btn-truncate").click(function(event) {
+		event.preventDefault();
+		if (confirm("Are you sure that you want to truncate the table?")) {
+			console.log("Hello! You need to code here.");
+			$("#frm-truncate").submit();
+		}
+	});
+})();
