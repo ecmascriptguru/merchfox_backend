@@ -7,6 +7,12 @@
 			<div class="panel-heading">You can see products pulled from Amazon.</div>
 
 			<div class="panel-body">
+				<form action="{{ route('home_post') }}" method="post" role="form">
+					{{ csrf_field() }}
+					<div class="form-group">
+						<input type="text" placeholder="Please enter any keyword" name="keyword" class="form-control" value="{{ $keyword }}">
+					</div>
+				</form>
 				<table id="products-table" class="table table-striped table-bordered" cellspacing="0" width="100%">
 					<thead>
 						<tr>

@@ -23,10 +23,18 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($keyword = NULL, Request $request)
     {
-        $products = Product::paginate(10);
-        return view('home', ['products' => $products]);
+        if ($request->isMethod('post')) {
+            $keyword = $request->input('keyword');
+        }
+        if ($keyword) {
+            $products = Product::where('title', 'LIKE', '%' . $keyword . '%')->paginate(10);
+        } else {
+            $products = Product::paginate(10);
+        }
+        $products->withPath('home/'.$keyword);
+        return view('home', ['products' => $products, 'keyword' => $keyword]);
     }
 
     /**

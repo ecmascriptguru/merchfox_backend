@@ -22,6 +22,16 @@ Route::get('home', [
 	'as' => 'home'
 ]);
 
+Route::post('home', [
+	'uses' => 'HomeController@index',
+	'as' => 'home_post'
+]);
+
+Route::get('home/{keyword}', [
+	'uses' => 'HomeController@index',
+	'as' => 'home'
+]);
+
 Route::get('profile', [
 	'uses' =>'Auth\ProfileController@index',
 	'as' => 'profile'
