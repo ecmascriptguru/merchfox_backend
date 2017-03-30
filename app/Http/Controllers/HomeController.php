@@ -33,7 +33,7 @@ class HomeController extends Controller
         } else {
             $products = Product::paginate(10);
         }
-        $products->withPath('home/'.$keyword);
+        $products->withPath('/home/'.$keyword);
         return view('home', ['products' => $products, 'keyword' => $keyword]);
     }
 
