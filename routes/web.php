@@ -36,3 +36,7 @@ Route::post('truncate', [
 	'uses' => 'HomeController@truncate',
 	'as' => 'truncate'
 ]);
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
