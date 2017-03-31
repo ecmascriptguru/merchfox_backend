@@ -17,4 +17,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 Route::resource('product', 'ProductController');
+
+Route::post('v1/login', [
+	'uses' => 'Auth\APIController@login',
+	'as' => 'api_login'
+]);
