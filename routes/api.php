@@ -20,7 +20,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('product', 'ProductController');
 
-Route::post('v1/login', [
-	'uses' => 'Auth\APIController@login',
-	'as' => 'api_login'
-]);
+Route::group(['prefix' => 'v1/'], function() {
+	Route::post('login', [
+		'uses' => 'Auth\APIController@login',
+		'as' => 'api_login'
+	]);
+
+	Route::post('items/save', [
+		'uses' => 'Auth\APIController@item_save',
+		'as' => 'api_item_save'
+	]);
+
+	Route::delete('items/unsave', [
+		'uses' => 'Auth\APIController@item_unsave',
+		'as' => 'api_item_unsave'
+	]);
+});
