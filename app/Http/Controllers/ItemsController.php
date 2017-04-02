@@ -26,12 +26,11 @@ class ItemsController extends Controller
 	public function index()
 	{
 		$user = Auth::user();
-		// $items = $user->items();
-		$items = Item::where('user_id', $user->id)->get();
-		return Response()->json([
-			'user' => $user,
-			'items' => $items
-		]);
+		$items = Item::where('user_id', $user->id)
+			->where('status', 'active')
+			->get();
+
+		return view('items.index', ['items' => $items, 'user' => $user]);
 	}
 
 	/**
@@ -63,7 +62,7 @@ class ItemsController extends Controller
 	 */
 	public function show(Item $item)
 	{
-		//
+		return view('items.show', ['item' => $item]);
 	}
 
 	/**
@@ -97,6 +96,8 @@ class ItemsController extends Controller
 	 */
 	public function destroy(Item $item)
 	{
-		//
+		$item->delete();
+
+		return redirect()->route('items.index');
 	}
 }

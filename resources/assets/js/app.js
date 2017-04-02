@@ -28,4 +28,11 @@ require('./bootstrap');
 			$("#frm-truncate").submit();
 		}
 	});
+
+	$("#item-show button#item-btn-delete").click(function(event) {
+		event.preventDefault();
+		if (confirm("Are you sure that you want to delete this saved product?")) {
+			$("form#delete-form").submit();
+		}
+	});
 })();

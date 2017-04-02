@@ -35,7 +35,6 @@ class ProfileController extends Controller
 	{
 		// $request->user() returns an instance of the authenticated user...
 		// echo "Hello";
-		var_dump($request);exit;
 		return view('auth.profile', ['user' => $request->user()]);
 	}
 }

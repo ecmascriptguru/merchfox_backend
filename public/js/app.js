@@ -38153,13 +38153,20 @@ require('./bootstrap');
 
 
 (function () {
-  $("#btn-truncate").click(function (event) {
-    event.preventDefault();
-    if (confirm("Are you sure that you want to truncate the table?")) {
-      console.log("Hello! You need to code here.");
-      $("#frm-truncate").submit();
-    }
-  });
+	$("#btn-truncate").click(function (event) {
+		event.preventDefault();
+		if (confirm("Are you sure that you want to truncate the table?")) {
+			console.log("Hello! You need to code here.");
+			$("#frm-truncate").submit();
+		}
+	});
+
+	$("#item-show button#item-btn-delete").click(function (event) {
+		event.preventDefault();
+		if (confirm("Are you sure that you want to delete this saved product?")) {
+			$("form#delete-form").submit();
+		}
+	});
 })();
 
 },{"./bootstrap":32}],32:[function(require,module,exports){
