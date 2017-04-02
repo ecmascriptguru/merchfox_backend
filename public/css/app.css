@@ -7700,4 +7700,10 @@ img.product-image {
   width: 110px;
 }
 
+img.nav-avatar {
+  width: 24px;
+  margin-top: -5px;
+  margin-right: 9px;
+}
+
 /*# sourceMappingURL=app.css.map */
