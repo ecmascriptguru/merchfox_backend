@@ -32,7 +32,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/">Word Fox</a>
+					<a class="navbar-brand" href="/">{{ config('app.name', 'Word Fox') }}</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
