@@ -21,7 +21,7 @@
 			]) !!};
 		</script>
 	</head>
-	<body>
+	<body id="welcome-page">
 		<nav class="navbar navbar-default">
 			<div class="container">
 				<!-- Brand and toggle get grouped for better mobile display -->
@@ -102,20 +102,35 @@
 			</div><!-- /.container-fluid -->
 		</nav>
 		<div class="container">
-			<dir class="col-lg-10 col-md-9 col-sm-8 col-xs-6">
-				<div class="content">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<div class="col-lg-9 col-md-9 col-sm-8 col-xs-6">
+				<div class="content" id="selected-post">
+					<h3 class="title">{{ $posts[0]->title }}</h3>
+					<div class="image">
+						<img class="post-image" src="{{ Voyager::image($posts[0]->image) }}">
+					</div>
+					<div class="post-body">
+						{!! html_entity_decode($posts[0]->body) !!}
+					</div>
 				</div>
-			</dir>
-			<dir class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 right-sidebar">
+				<h3>Recent Posts</h3>
 				<ul class="posts">
 					@foreach($posts as $post)
-					<li class="post">
-						<h4 class="title">{{ $post->title }}</h4>
+					<li class="post" data-img-url="{{ Voyager::image($post->image) }}" data-body="{{ $post->body }}">
+						<h5 class="post-title">{{ $post->title }}</h5>
+						<p class="post-excerpt">
+							@if (strlen($post->excerpt) > 50)
+								{{ substr($post->excerpt, 0, 47) . "..."}}
+							@else
+								{{ $post->excerpt }}
+							@endif
+						</p>
+						<p class="posted-at">{{ $post->updated_at }}</p>
 					</li>
 					@endforeach
 				</ul>
-			</dir>
+			</div>
 		</div>
 	</body>
 	<!-- Scripts -->

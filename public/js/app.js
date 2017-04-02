@@ -38167,6 +38167,19 @@ require('./bootstrap');
 			$("form#delete-form").submit();
 		}
 	});
+
+	$("#welcome-page .right-sidebar li.post").click(function (event) {
+		event.preventDefault();
+		var $postEl = $(this),
+		    $selectedPostTitle = $("#welcome-page #selected-post h3.title"),
+		    $selectedPostImage = $("#welcome-page #selected-post img.post-image"),
+		    $selectedPostBody = $("#welcome-page #selected-post div.post-body");
+
+		$selectedPostTitle.text($postEl.find(".post-title").text());
+		$selectedPostImage[0].src = $postEl.attr('data-img-url');
+		$selectedPostBody.children().remove();
+		$selectedPostBody.append($($postEl.attr("data-body")));
+	});
 })();
 
 },{"./bootstrap":32}],32:[function(require,module,exports){

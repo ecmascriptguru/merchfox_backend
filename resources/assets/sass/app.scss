@@ -34,6 +34,52 @@ button.nav-logout-button {
 	background: none;
 }
 
+/**
+ *	Welcome page
+ */
+#welcome-page {
+	div#selected-post {
+		h3.title {
+			font-weight: bold;
+		}
+		div.image img {
+			width: 100%;
+			border: solid 2px darkgrey;
+		}
+		div.post-body {
+			margin-top: 10px;
+		}
+	}
+	div.right-sidebar {
+		ul.posts {
+			padding-left: 10px;
+			li.post {
+			    list-style: none;
+				cursor: pointer;
+				border-bottom: solid 1px grey;
+				position: relative;
+				margin: 0 0 11px;
+				padding: 0 0 10px;
+
+				h5.post-title {
+					font-weight: bold;
+				}
+				p.posted-at {
+				    font-style: italic;
+					position: absolute;
+					bottom: 0;
+					right: 0;
+					font-size: 12px;
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+	footer {
+		height: 30px;
+		background-color: dimgray;
+	}
+}
 @media (min-width: 768px) {
 	form.login-form input.form-control {
 	    max-width: 115px;
