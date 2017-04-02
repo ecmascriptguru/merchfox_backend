@@ -56,32 +56,43 @@
 					@if (Route::has('login'))
 					<ul class="nav navbar-nav navbar-right">
 						@if(!Auth::check())
-						<form class="navbar-form navbar-left">
+						<form class="navbar-form login-form navbar-left" action="{{ route('login') }}" method="POST">
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Email Address">
+								<input type="email" name="email" class="form-control" placeholder="Email Address">
+								<input type="password" name="password" class="form-control" placeholder="Password">
 							</div>
-							<div class="form-group">
-								<input type="password" class="form-control" placeholder="Password">
-							</div>
+							{{ csrf_field() }}
 							<button type="submit" class="btn btn-default">Login</button>
 						</form>
+						<li class="dropdown">
+							<a href="{{ route('login') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Log In<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="{{ route('login') }}">Login</a></li>
+								<li><a href="{{ route('register') }}">Register</a></li>
+							</ul>
+						</li>
 						@else
-						<form class="navbar-form navbar-left">
+						<form class="navbar-form navbar-left" action="{{ route('home_post') }}">
 							<div class="form-group">
-								<input type="keyword" class="form-control" placeholder="Keyword">
+								<input type="keyword" name="keyword" class="form-control" placeholder="Keyword">
 							</div>
 							<button type="submit" class="btn btn-default">Submit</button>
 						</form>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="{{ Voyager::image(Auth::user()->avatar) }}" class="nav-avatar">{{ Auth::user()->name }}<span class="caret"></span></a>
+							<a href="{{ route('profile') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="{{ Voyager::image(Auth::user()->avatar) }}" class="nav-avatar">{{ Auth::user()->name }}<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								@if (Auth::user()->role_id == 1)
 								<li><a href="{{ route('voyager.dashboard') }}">Admin Page</a></li>
 								@endif
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
+								<!-- <li><a href="{{ route('profile') }}">Profile</a></li> -->
+								<li><a href="{{ route('items.index') }}">My products</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a href="#">Separated link</a></li>
+								<li>
+									<form method="POST" action="{{ route('logout') }}">
+										{{ csrf_field() }}
+										<button class="nav-logout-button" type="submit">Sign Out</button>
+									</form>
+								</li>
 							</ul>
 						</li>
 						@endif
@@ -90,31 +101,21 @@
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
 		</nav>
-		<div class="flex-center position-ref full-height">
-			@if (Route::has('login'))
-				<div class="top-right links">
-					@if (Auth::check())
-						<a href="{{ url('/home') }}">Home</a>
-					@else
-						<a href="{{ url('/login') }}">Login</a>
-						<a href="{{ url('/register') }}">Register</a>
-					@endif
+		<div class="container">
+			<dir class="col-lg-10 col-md-9 col-sm-8 col-xs-6">
+				<div class="content">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				</div>
-			@endif
-
-			<div class="content">
-				<div class="title m-b-md">
-					Laravel
-				</div>
-
-				<div class="links">
-					<a href="https://laravel.com/docs">Documentation</a>
-					<a href="https://laracasts.com">Laracasts</a>
-					<a href="https://laravel-news.com">News</a>
-					<a href="https://forge.laravel.com">Forge</a>
-					<a href="https://github.com/laravel/laravel">GitHub</a>
-				</div>
-			</div>
+			</dir>
+			<dir class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+				<ul class="posts">
+					@foreach($posts as $post)
+					<li class="post">
+						<h4 class="title">{{ $post->title }}</h4>
+					</li>
+					@endforeach
+				</ul>
+			</dir>
 		</div>
 	</body>
 	<!-- Scripts -->

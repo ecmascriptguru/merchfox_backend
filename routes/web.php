@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+	'uses' => 'WelcomeController@index',
+	'as' => 'welcome'
+]);
 
 Auth::routes();
 
