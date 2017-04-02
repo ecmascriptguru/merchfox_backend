@@ -46,9 +46,11 @@
 					<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
 						<a href="/" class="form-control btn btn-success">Back</a>
 					</div>
+					@if (Auth::user()->role_id == 1)
 					<div class="col-lg-2 col-lg-offset-8 col-md-2 col-md-offset-8 col-sm-3 col-sm-offset-6 col-xs-6">
 						<button id="btn-truncate" data-href="{{ route('truncate') }}" class="form-control btn btn-danger">Truncate Database</button>
 					</div>
+					@endif
 				</div>
                 <form action="{{ route('truncate') }}" method="post" id="frm-truncate">
                     {{ csrf_field() }}
