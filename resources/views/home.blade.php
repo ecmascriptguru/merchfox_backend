@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
 		<div class="panel panel-default">
 			<div class="panel-heading">You can see products pulled from Amazon.</div>
@@ -18,7 +18,7 @@
 						<tr>
 							<th>Image</th>
 							<th>Title</th>
-							<th>Keywords</th>
+							<th>Bullet Points</th>
 							<th>Price</th>
 							<th>BSR</th>
 							<th>bsr</th>
@@ -27,19 +27,26 @@
 					</thead>
 					<tbody>
 						@foreach ($products as $product)
-                        <tr>
-                            <td><img src="{{ $product->img_url }}" class="product-image"></td>
-                            <td>{{ $product->title }}</td>
-                            <td>{{ $product->keywords }}</td>
-                            <td>{{ $product->price }}</td>
-                            <td>{{ $product->top_bsr }}</td>
-                            <td>{{ $product->bottom_bsr }}</td>
-                            <td><a href="{{ $product->link }}" target="_newTab"><button class="btn btn-success">Check</button></a></td>
-                        </tr>
+						<tr>
+							<td><img src="{{ $product->img_url }}" class="product-image"></td>
+							<td>{{ $product->title }}</td>
+							<td>
+								<ul>
+									@foreach(explode("\n", $product->bullet_points) as $point)
+									<li>{{ $point }}</li>
+									@endforeach
+								</ul>
+								
+							</td>
+							<td>{{ $product->price }}</td>
+							<td>{{ $product->top_bsr }}</td>
+							<td>{{ $product->bottom_bsr }}</td>
+							<td><a href="{{ $product->link }}" target="_newTab"><button class="btn btn-success">Check</button></a></td>
+						</tr>
 						@endforeach
 					</tbody>
 				</table>
-				<div class="pagination-container col-xs-12" style="float:right;">
+				<div class="pagination-container col-xs-12" style="text-align:right;">
 					{{ $products->links() }}
 				</div>
 				<div class="controller-container row">
@@ -52,9 +59,9 @@
 					</div>
 					@endif
 				</div>
-                <form action="{{ route('truncate') }}" method="post" id="frm-truncate">
-                    {{ csrf_field() }}
-                </form>
+				<form action="{{ route('truncate') }}" method="post" id="frm-truncate">
+					{{ csrf_field() }}
+				</form>
 			</div>
 		</div>
 	</div>

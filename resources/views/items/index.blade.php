@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
 		<div class="panel panel-default">
 			<div class="panel-heading">Here are the products you saved.</div>
@@ -13,10 +13,10 @@
 							<th>#</th>
 							<th>Product Image</th>
 							<th>Title</th>
+							<th>Bullet Points</th>
 							<th width="60px">Price</th>
 							<th>BSR</th>
 							<th>bsr</th>
-							<th>Keywords</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
@@ -27,10 +27,16 @@
 							<td>{{ $index }}</td>
 							<td><img src="{{ $item->img_url }}" class="product-image"></td>
 							<td>{{ $item->title }}</td>
+							<td>
+								<ul>
+									@foreach(explode("\n", $item->bullet_points) as $point)
+									<li>{{ $point }}</li>
+									@endforeach
+								</ul>
+							</td>
 							<td>{{ $item->price }}</td>
 							<td>{{ $item->top_bsr }}</td>
 							<td>{{ $item->bottom_bsr }}</td>
-							<td>{{ $item->keywords }}</td>
 							<td class="actions">
 								<a href="{{ route('items.show', $item->id) }}" class="btn btn-default">View</a>
 							</td>
