@@ -38152,7 +38152,7 @@ require('./bootstrap');
 // });
 
 
-(function () {
+(function (window, jQuery) {
 	$("#btn-truncate").click(function (event) {
 		event.preventDefault();
 		if (confirm("Are you sure that you want to truncate the table?")) {
@@ -38180,7 +38180,7 @@ require('./bootstrap');
 		$selectedPostBody.children().remove();
 		$selectedPostBody.append($($postEl.attr("data-body")));
 	});
-})();
+})(window, $);
 
 },{"./bootstrap":32}],32:[function(require,module,exports){
 'use strict';

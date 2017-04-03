@@ -28,7 +28,7 @@ class ItemsController extends Controller
 		$user = Auth::user();
 		$items = Item::where('user_id', $user->id)
 			->where('status', 'active')
-			->get();
+			->paginate(10);
 
 		return view('items.index', ['items' => $items, 'user' => $user]);
 	}

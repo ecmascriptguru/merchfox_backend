@@ -20,7 +20,7 @@ require('./bootstrap');
 // });
 
 
-(function() {
+(function(window, jQuery) {
 	$("#btn-truncate").click(function(event) {
 		event.preventDefault();
 		if (confirm("Are you sure that you want to truncate the table?")) {
@@ -47,5 +47,5 @@ require('./bootstrap');
 		$selectedPostImage[0].src = $postEl.attr('data-img-url');
 		$selectedPostBody.children().remove();
 		$selectedPostBody.append($($postEl.attr("data-body")));
-	})
-})();
+	});
+})(window, $);
