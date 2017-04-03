@@ -26,9 +26,14 @@ class ItemsController extends Controller
 	public function index()
 	{
 		$user = Auth::user();
-		$items = Item::where('user_id', $user->id)
-			->where('status', 'active')
-			->paginate(10);
+		if ($user->role_id == 1) {
+			$items = Item::where('status', 'active')
+				->paginate(10);
+		} else {
+			$items = Item::where('user_id', $user->id)
+				->where('status', 'active')
+				->paginate(10);
+		}
 
 		return view('items.index', ['items' => $items, 'user' => $user]);
 	}

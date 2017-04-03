@@ -43,6 +43,22 @@
 				<div class="row">
 					<div class="form-group">
 						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+							<h4>Bullet Points:</h4>
+						</div>
+						<div class="col-lg-9 col-md-8 col-sm-6 col-xs-6">
+							@if (explode("\n", $item->bullet_points) > 0)
+							<ul>
+								@foreach(explode("\n", $item->bullet_points) as $point)
+								<li>{{ $point }}</li>
+								@endforeach
+							</ul>
+							@endif
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group">
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
 							<h4>Best Seller Rank:</h4>
 						</div>
 						<div class="col-lg-9 col-md-8 col-sm-6 col-xs-6">
