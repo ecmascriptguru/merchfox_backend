@@ -31,7 +31,7 @@ Route::group(['prefix' => 'v1/'], function() {
 		'as' => 'api_item_save'
 	]);
 
-	Route::delete('items/unsave', [
+	Route::post('items/unsave', [
 		'uses' => 'Auth\APIController@item_unsave',
 		'as' => 'api_item_unsave'
 	]);

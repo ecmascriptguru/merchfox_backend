@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Product;
 use App\Item;
 
 class APIController extends Controller
@@ -28,29 +29,36 @@ class APIController extends Controller
 	}
 
 	public function item_save(Request $request) {
+		$product_id = $request->input('product_id');
+		$user_id = $request->input('user_id');
+		$product = Product::find($product_id);
 		$item = new Item;
-		$item->user_id = $request->input('user_id');
-		$item->title = $request->input('title');
-		$item->link = $request->input('link');
-		$item->img_url = $request->input('img_url');
-		$item->price = $request->input('price');
-		$item->top_bsr = $request->input('top_bsr');
-		$item->bottom_bsr = $request->input('bottom_bsr');
-		$item->keywords = $request->input('keywords');
+		$item->user_id = $user_id;
+		$item->title = $product->title;
+		$item->link = $product->link;
+		$item->img_url = $product->img_url;
+		$item->price = $product->price;
+		$item->top_bsr = $product->top_bsr;
+		$item->bottom_bsr = $product->bottom_bsr;
+		$item->keywords = $product->keywords;
 		$status = $item->save();
+		$product->saved_id = $item->id;
+		$product->save();
 
 		return Response()->json([
 			'status' => $status,
-			'id' => $item->id
+			'saved_id' => $product->saved_id
 		]);
 	}
 
 	public function item_unsave(Request $request) {
-		$id = $request->input('id');
-		$item = Item::find($id);
-		// $item->status = "inactive";
-		// $status = $item->save();
+		$product_id = $request->input('product_id');
+		$product = Product::find($product_id);
+		$saved_id = $request->input('saved_id');
+		$item = Item::find($saved_id);
 		$status = $item->delete();
+		$product->saved_id = null;
+		$product->save();
 
 		return Response()->json([
 			'status' => $status,
