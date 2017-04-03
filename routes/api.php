@@ -26,6 +26,16 @@ Route::group(['prefix' => 'v1/'], function() {
 		'as' => 'api_login'
 	]);
 
+	Route::post('products/get', [
+		'uses' => 'Auth\APIController@get_products',
+		'as' => 'api_get_products'
+	]);
+
+	Route::post('products/set', [
+		'uses' => 'Auth\APIController@get_products',
+		'as' => 'api_get_products'
+	]);
+
 	Route::post('items/save', [
 		'uses' => 'Auth\APIController@item_save',
 		'as' => 'api_item_save'

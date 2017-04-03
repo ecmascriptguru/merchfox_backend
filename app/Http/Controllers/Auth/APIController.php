@@ -66,4 +66,59 @@ class APIController extends Controller
 			'status' => $status,
 		]);
 	}
+
+	public function get_products(Request $request) {
+		$user_id = $request->input('user_id');
+		$user = User::find($user_id);
+
+		$products = Product::where('created_by', $user->id)->paginate(100);
+		return Response()->json([
+			'status' => true,
+			'data' => $products
+		]);
+	}
+
+	public function set_products(Request $request) {
+		$user_id = $request->input('user_id');
+		$products = $request->input('data');
+
+		$query = array();
+		$now = date('Y-m-d H:i:s');
+		// var_dump($products[0]['top_bsr']);exit;
+		foreach ($products as $key => $product) {
+			$tempTopBSR = $tempBottomBSR = $brand_img_url = null;
+			$img_url = "";
+			if (isset($product['top_bsr'])) {
+				$tempTopBSR = $product['top_bsr'];
+			}
+			if (isset($product['bottom_bsr'])) {
+				$tempBottomBSR = $product['bottom_bsr'];
+			}
+			if (isset($product['brand_img_url'])) {
+				$brand_img_url = $product['brand_img_url'];
+			}
+			if (isset($product['img_url'])) {
+				$img_url = $product['img_url'];
+			}
+			array_push($query, array(
+					'title' => $product['title'],
+					'bullet_points' => $product['bullet_points'],
+					'link' => $product['link'],
+					'img_url' => $product['img_url'],
+					'brand_url' => $product['brand_url'],
+					'brand_img_url' => $brand_img_url,
+					'price' => $product['price'],
+					'top_bsr' => $tempTopBSR,//$product['top_bsr'],
+					'bottom_bsr' => $tempBottomBSR, //$product['bottom_bsr'],
+					'keywords' => $product['keywords'],
+					'created_by' => $user_id,
+					'created_at' => $now,
+					'updated_at' => $now
+				));
+		}
+		$status = Product::insert($query);
+		return Response()->json([
+			'status' => $status
+		]);
+	}
 }
