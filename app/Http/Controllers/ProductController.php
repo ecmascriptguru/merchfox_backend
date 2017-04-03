@@ -45,12 +45,15 @@ class ProductController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		$products = $request->all();
+		$user_id = $request->input('user_id');
+		$products = $request->input('data');
+
 		$query = array();
-		$tempTopBSR = $tempBottomBSR = $brand_img_url = null;
-		$img_url = "";
+		$now = date('Y-m-d H:i:s');
 		// var_dump($products[0]['top_bsr']);exit;
 		foreach ($products as $key => $product) {
+			$tempTopBSR = $tempBottomBSR = $brand_img_url = null;
+			$img_url = "";
 			if (isset($product['top_bsr'])) {
 				$tempTopBSR = $product['top_bsr'];
 			}
@@ -71,7 +74,10 @@ class ProductController extends Controller
 					'price' => $product['price'],
 					'top_bsr' => $tempTopBSR,//$product['top_bsr'],
 					'bottom_bsr' => $tempBottomBSR, //$product['bottom_bsr'],
-					'keywords' => $product['keywords']
+					'keywords' => $product['keywords'],
+					'created_by' => $user_id,
+					'created_at' => $now,
+					'updated_at' => $now
 				));
 		}
 		$status = Product::insert($query);
