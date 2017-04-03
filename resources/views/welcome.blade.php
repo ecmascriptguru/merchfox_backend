@@ -38,7 +38,7 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="wordfox-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="{{ route('home', ['keyword' => '']) }}">Products <span class="sr-only"></span></a></li>
+						<li class=""><a href="{{ route('home', ['keyword' => '']) }}">Products <span class="sr-only"></span></a></li>
 						<li><a href="{{ route('items.index') }}">Your products</a></li>
 						<!-- <li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
