@@ -31,7 +31,7 @@
 							<td><img src="{{ $product->img_url }}" class="product-image"></td>
 							<td>{{ $product->title }}</td>
 							<td>
-								@if(sizeof(explode("\n", $product->bullet_points)) > 0 && explode("\n", $product->bullet_points) != "")
+								@if(sizeof(explode("\n", $product->bullet_points)) > 0 && explode("\n", $product->bullet_points)[0] != "")
 								<ul>
 									@foreach(explode("\n", $product->bullet_points) as $point)
 									<li>{{ $point }}</li>
