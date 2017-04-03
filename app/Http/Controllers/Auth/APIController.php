@@ -35,8 +35,10 @@ class APIController extends Controller
 		$item = new Item;
 		$item->user_id = $user_id;
 		$item->title = $product->title;
+		$item->bullet_points = $product->bullet_points;
 		$item->link = $product->link;
 		$item->img_url = $product->img_url;
+		$item->brand_url = $product->brand_url;
 		$item->price = $product->price;
 		$item->top_bsr = $product->top_bsr;
 		$item->bottom_bsr = $product->bottom_bsr;

@@ -68,8 +68,10 @@ class ProductController extends Controller
 			}
 			array_push($query, array(
 					'title' => $product['title'],
+					'bullet_points' => $product['bullet_points'],
 					'link' => $product['link'],
 					'img_url' => $product['img_url'],
+					'brand_url' => $product['brand_url'],
 					'brand_img_url' => $brand_img_url,
 					'price' => $product['price'],
 					'top_bsr' => $tempTopBSR,//$product['top_bsr'],
