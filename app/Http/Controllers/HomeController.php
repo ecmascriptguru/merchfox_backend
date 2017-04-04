@@ -52,6 +52,6 @@ class HomeController extends Controller
      */
     public function truncate() {
         $status = DB::table('products')->truncate();
-        return redirect()->route('home');
+        return redirect()->route('home', ['keyword' => '']);
     }
 }
