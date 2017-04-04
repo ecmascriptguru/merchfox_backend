@@ -32,7 +32,7 @@ Route::group(['prefix' => 'v1/'], function() {
 	]);
 
 	Route::post('products/set', [
-		'uses' => 'Auth\APIController@get_products',
+		'uses' => 'Auth\APIController@set_products',
 		'as' => 'api_get_products'
 	]);
 
