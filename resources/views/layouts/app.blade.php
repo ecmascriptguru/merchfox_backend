@@ -13,6 +13,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    <!-- Fav icon -->
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([

@@ -15,6 +15,9 @@
 
 		<!-- Styles -->
    		<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+		<!-- Fav icon -->
+		<link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 		<script>
 			window.Laravel = {!! json_encode([
 				'csrfToken' => csrf_token(),
