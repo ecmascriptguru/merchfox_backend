@@ -48,6 +48,11 @@ Route::post('truncate', [
 	'as' => 'truncate'
 ]);
 
+Route::post('items/truncate', [
+	'uses' => 'ItemsController@truncate',
+	'as' => 'truncate_items'
+]);
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });

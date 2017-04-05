@@ -47,13 +47,24 @@
 						@endforeach
 					</tbody>
 				</table>
+				<div class="pagination-container col-xs-12" style="text-align:right;">
+					{{ $items->links() }}
+				</div>
+				<form action="{{ route('truncate_items') }}" method="post" id="frm-truncate">
+					{{ csrf_field() }}
+				</form>
 			</div>
 
 			<div class="panel-footer">
 				<div class="row">
-					<div class="pagination-container col-xs-12" style="text-align:right;">
-						{{ $items->links() }}
+					<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
+						<a href="{{ route('home', ['keyword' => '']) }}" class="btn btn-success form-control">Back to Products</a>
 					</div>
+					@if (Auth::user()->role_id == 1)
+					<div class="col-lg-2 col-lg-offset-8 col-md-2 col-md-offset-8 col-sm-3 col-sm-offset-6 col-xs-6">
+						<button class="btn btn-danger form-control" data-href="{{ route('truncate_items') }}" id="btn-truncate">Delete Saved Items</button>
+					</div>
+					@endif
 				</div>
 			</div>
 		</div>

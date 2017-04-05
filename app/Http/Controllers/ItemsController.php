@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ItemsController extends Controller
 {
@@ -104,5 +105,16 @@ class ItemsController extends Controller
 		$item->delete();
 
 		return redirect()->route('items.index');
+	}
+
+	/**
+	 *	Remove all records from Items table
+	 *
+	 *	@param
+	 *	@return JSON
+	 */
+	public function truncate(Request $request) {
+		$status = DB::table('items')->truncate();
+        return redirect()->route('items.index');
 	}
 }
