@@ -134,6 +134,8 @@ class ItemsController extends Controller
 			$index++;
 		}
 
+		var_dump($data);exit;
+
 		Excel::create('items', function($excel) use ($data) {
 
 			// Set the spreadsheet title, creator, and description
