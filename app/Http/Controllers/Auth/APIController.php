@@ -160,6 +160,8 @@ class APIController extends Controller
 			$data[] = array($index, $item->title, $item->bullet_points, $item->price, $item->top_bsr, $item->bottom_bsr, $item->link, $item->img_url);
 			$index++;
 		}
+		
+		var_dump($data);exit;
 
 		Excel::create('items', function($excel) use ($data) {
 
