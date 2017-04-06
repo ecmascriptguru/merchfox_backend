@@ -81,6 +81,11 @@ class APIController extends Controller
 	public function set_products(Request $request) {
 		$user_id = $request->input('user_id');
 		$products = $request->input('data');
+		$start_flag = $request->input('start_flag');
+
+		if ($start_flag) {
+			$delStatus = Product::where('created_by', $user_id)->delete();
+		}
 
 		$query = array();
 		$now = date('Y-m-d H:i:s');
