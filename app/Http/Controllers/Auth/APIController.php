@@ -67,6 +67,27 @@ class APIController extends Controller
 		]);
 	}
 
+	public function get_items(Request $request) {
+		$user_id = $request->input('user_id');
+		$items = Item::where('user_id', $user_id)->paginate(100);
+
+		return Response()->json([
+			'status' => true,
+			'data' => $items
+		]);
+	}
+
+	public function remove_item(Request $request) {
+		$item_id = $request->input('item_id');
+		$item = Item::find($item_id);
+		$status = false;
+		$status = $item->delete();
+
+		return Response()->json([
+			'status' => $status
+		]);
+	}
+
 	public function get_products(Request $request) {
 		$user_id = $request->input('user_id');
 		$user = User::find($user_id);

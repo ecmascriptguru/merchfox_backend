@@ -36,13 +36,25 @@ Route::group(['prefix' => 'v1/'], function() {
 		'as' => 'api_get_products'
 	]);
 
-	Route::post('items/save', [
-		'uses' => 'Auth\APIController@item_save',
-		'as' => 'api_item_save'
-	]);
+	Route::group(['prefix' => 'items/'], function() {
+		Route::post('save', [
+			'uses' => 'Auth\APIController@item_save',
+			'as' => 'api_item_save'
+		]);
 
-	Route::post('items/unsave', [
-		'uses' => 'Auth\APIController@item_unsave',
-		'as' => 'api_item_unsave'
-	]);
+		Route::post('unsave', [
+			'uses' => 'Auth\APIController@item_unsave',
+			'as' => 'api_item_unsave'
+		]);
+
+		Route::post('get', [
+			'uses' => 'Auth\APIController@get_items',
+			'as' => 'api_get_items'
+		]);
+
+		Route::post('del', [
+			'uses' => 'Auth\APIController@remove_item',
+			'as' => 'api_delete_item'
+		]);
+	});
 });
