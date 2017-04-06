@@ -56,5 +56,10 @@ Route::group(['prefix' => 'v1/'], function() {
 			'uses' => 'Auth\APIController@remove_item',
 			'as' => 'api_delete_item'
 		]);
+
+		Route::get('download/{id}', [
+			'uses' => 'Auth\APIController@download',
+			'as' => 'api_download_items'
+		]);
 	});
 });
