@@ -58,7 +58,7 @@
 			<div class="panel-footer">
 				<div class="row">
 					<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
-						<a href="{{ route('home', ['keyword' => '']) }}" class="btn btn-success form-control">Back to Products</a>
+						<a href="{{ route('excel_download') }}" target="_newTab" class="btn btn-success form-control">Export to Excel</a>
 					</div>
 					@if (Auth::user()->role_id == 1)
 					<div class="col-lg-2 col-lg-offset-8 col-md-2 col-md-offset-8 col-sm-3 col-sm-offset-6 col-xs-6">

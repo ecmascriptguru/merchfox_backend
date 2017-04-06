@@ -6,6 +6,7 @@ use App\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ItemsController extends Controller
 {
@@ -116,5 +117,35 @@ class ItemsController extends Controller
 	public function truncate(Request $request) {
 		$status = DB::table('items')->truncate();
         return redirect()->route('items.index');
+	}
+
+	/**
+	 *
+	 */
+	public function download(Request $request) {
+		$user = Auth::user();
+		$items = DB::table('items')->where('user_id', $user->id)->get();
+		$data = [];
+		$index = 1;
+		$data[] = array('id', 'title', 'bullet_points', 'price', 'BSR', 'bsr', 'link', 'img_url');
+
+		foreach($items as $item) {
+			$data[] = array($index, $item->title, $item->bullet_points, $item->price, $item->top_bsr, $item->bottom_bsr, $item->link, $item->img_url);
+			$index++;
+		}
+
+		Excel::create('items', function($excel) use ($data) {
+
+			// Set the spreadsheet title, creator, and description
+			$excel->setTitle('Saved Items');
+			$excel->setCreator('Alexis Richard')->setCompany('Merch Fox');
+			$excel->setDescription('Saved products');
+
+			// Build the spreadsheet, passing in the payments array
+			$excel->sheet('sheet1', function($sheet) use ($data) {
+				$sheet->fromArray($data, null, 'A1', false, false);
+			});
+
+		})->download('xlsx');
 	}
 }

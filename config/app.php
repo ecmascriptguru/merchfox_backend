@@ -185,6 +185,12 @@ return [
         TCG\Voyager\VoyagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
+        /**
+         *
+         *  For Excel Download
+         */
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
     ],
 
     /*
@@ -233,6 +239,11 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        /**
+         * For Excel download
+         */
+        'Excel'     => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 

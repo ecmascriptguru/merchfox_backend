@@ -53,6 +53,11 @@ Route::post('items/truncate', [
 	'as' => 'truncate_items'
 ]);
 
+Route::get('items/download', [
+	'uses' => 'ItemsController@download',
+	'as' => 'excel_download'
+]);
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
