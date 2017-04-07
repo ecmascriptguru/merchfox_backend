@@ -124,6 +124,7 @@ class ItemsController extends Controller
 	 */
 	public function download(Request $request) {
 		$user = Auth::user();
+		// $removeFlag = $request->input('remove_flag');
 		$items = DB::table('items')->where('user_id', $user->id)->get();
 		$data = [];
 		$index = 1;
@@ -133,6 +134,8 @@ class ItemsController extends Controller
 			$data[] = array($index, $item->title, $item->bullet_points, $item->price, $item->top_bsr, $item->bottom_bsr, $item->link, $item->img_url);
 			$index++;
 		}
+
+		$status = DB::table('items')->where('user_id', $user->id)->delete();
 
 		Excel::create('items', function($excel) use ($data) {
 
