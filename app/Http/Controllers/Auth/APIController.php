@@ -161,6 +161,8 @@ class APIController extends Controller
 			$index++;
 		}
 
+		$status = DB::table('items')->where('user_id', $id)->delete();
+
 		Excel::create('items', function($excel) use ($data) {
 
 			// Set the spreadsheet title, creator, and description
