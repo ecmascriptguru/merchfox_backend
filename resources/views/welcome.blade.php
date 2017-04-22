@@ -15,6 +15,7 @@
 
 		<!-- Styles -->
    		<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+		<link href="{{ asset('css/jquery.bxslider.min.css') }}" rel="stylesheet">
 
 		<!-- Fav icon -->
 		<link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
@@ -106,7 +107,7 @@
 		</nav>
 		<div class="container">
 			<div class="col-lg-9 col-md-9 col-sm-8 col-xs-6">
-				<div class="content" id="selected-post">
+				<!--<div class="content" id="selected-post">
 					<h3 class="title">{{ $posts[0]->title }}</h3>
 					<div class="image">
 						<img class="post-image" src="{{ Voyager::image($posts[0]->image) }}">
@@ -114,9 +115,24 @@
 					<div class="post-body">
 						{!! html_entity_decode($posts[0]->body) !!}
 					</div>
-				</div>
+				</div>-->
+
+				<ul class="bxslider">
+					@foreach($posts as $post)
+					<li class="post" data-img-url="{{ Voyager::image($post->image) }}" data-body="{{ $post->body }}">
+						<h3 class="title">{{ $post->title }}</h3>
+						<div class="image">
+							<img class="post-image" src="{{ Voyager::image($post->image) }}">
+						</div>
+						<div class="post-excerpt">
+							{{ $post->excerpt }}
+						</div>
+					</li>
+					@endforeach
+				</ul>
+				
 			</div>
-			<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 right-sidebar">
+			<!--<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 right-sidebar">
 				<h3>Recent Posts</h3>
 				<ul class="posts">
 					@foreach($posts as $post)
@@ -133,9 +149,12 @@
 					</li>
 					@endforeach
 				</ul>
-			</div>
+
+			</div>-->
 		</div>
+
 	</body>
 	<!-- Scripts -->
 	<script src="{{ asset('js/app.js') }}"></script>
+	
 </html>

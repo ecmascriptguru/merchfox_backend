@@ -63,3 +63,7 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::resource('items', 'ItemsController');
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
