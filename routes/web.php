@@ -16,6 +16,11 @@ Route::get('/', [
 	'as' => 'welcome'
 ]);
 
+Route::get('detail/{id}',[
+	'uses' => 'DetailController@showbyId',
+	'as' => 'detail'
+]);
+
 Auth::routes();
 
 Route::get('home', [
