@@ -110,5 +110,6 @@
     <!-- Scripts -->
     <script src="{{ asset('js/fabric.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/magic.js') }}"></script>
 </body>
 </html>
