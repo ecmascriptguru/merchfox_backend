@@ -108,6 +108,7 @@
     </div>
 
     <!-- Scripts -->
+    <script src="{{ asset('js/fabric.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

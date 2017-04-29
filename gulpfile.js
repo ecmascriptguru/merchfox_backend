@@ -4,5 +4,6 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
     mix.sass('app.scss');
+    mix.browserify('fabric.js');
     mix.browserify('app.js');
 });
