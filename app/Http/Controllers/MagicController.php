@@ -20,15 +20,13 @@ class MagicController extends Controller
      *
      */
     public function index() {
-        echo "Hello";
-        exit;
+        return view('magic.index', ['data' => array()]);
     }
 
     /**
      *
      */
     public function edit() {
-        echo "Edit";
-        exit;
+        return view('magic.edit', ['data' => array()]);
     }
 }
