@@ -63,3 +63,15 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::resource('items', 'ItemsController');
+
+Route::group(['prefix' => 'magic'], function() {
+	Route::get('/', [
+		'uses' => 'MagicController@index',
+		'as' => 'magic_index'
+	]);
+
+	Route::get('/edit', [
+		'uses' => 'MagicController@edit',
+		'as' => 'magic_edit'
+	]);
+});
