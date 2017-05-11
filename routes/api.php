@@ -63,3 +63,7 @@ Route::group(['prefix' => 'v1/'], function() {
 		]);
 	});
 });
+
+Route::post('token','TokenController@newToken');
+
+Route::post('call/phone','CallController@newCall');

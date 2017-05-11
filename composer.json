@@ -10,7 +10,8 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "maatwebsite/excel": "^2.1",
-        "tcg/voyager": "^0.11.8"
+        "tcg/voyager": "^0.11.8",
+        "twilio/sdk": "^5.8"
     },
     "require-dev": {
         "deployer/deployer": "^4.3",

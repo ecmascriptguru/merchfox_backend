@@ -72,3 +72,5 @@ Route::resource('items', 'ItemsController');
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Route::get('/call','TwilioController@index');

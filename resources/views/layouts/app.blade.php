@@ -16,6 +16,8 @@
     <!-- Fav icon -->
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
     <!-- Scripts -->
+
+    <script src="//static.twilio.com/libs/twiliojs/1.2/twilio.min.js"></script>
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
@@ -109,5 +111,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/browser-call.js') }}"></script>
 </body>
 </html>
