@@ -109,8 +109,29 @@
                             <option value="no">No</option>
                         </select>
                     </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                            <button class="btn btn-default form-control step_control" data-target="step_3">Prev</button>
+                        </div>
+                        <div class="col-lg-2 col-lg-offset-8 col-md-3 col-md-offset-6 col-sm-4 col-sm-offset-4 col-xs-6">
+                            <button class="btn btn-primary form-control step_control" data-target="final">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default content-block" id="final" style="display:none;">
+                <div class="panel-heading">
+                    <h3>Final: Please check what you entered.</h3>
+                </div>
+                <div class="panel-body">
                     <div class="form-group">
-                        <label for="hire_me">Are you going to hire me?</label>
+                        <pre id='output'></pre>
+                    </div>
+                    <div class="form-group">
+                        <label for="hire_me">Is this correct and would you hire me?</label>
                         <select class="form-control" name="hire_me" id="hire_me">
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
@@ -120,7 +141,7 @@
                 <div class="panel-footer">
                     <div class="row">
                         <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
-                            <button class="btn btn-default form-control step_control" data-target="step_3">Prev</button>
+                            <button class="btn btn-default form-control step_control" data-target="step_4">Prev</button>
                         </div>
                         <div class="col-lg-2 col-lg-offset-8 col-md-3 col-md-offset-6 col-sm-4 col-sm-offset-4 col-xs-6">
                             <button class="btn btn-primary form-control step_control" data-target="">Finish</button>
