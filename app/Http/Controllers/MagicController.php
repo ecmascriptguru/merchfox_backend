@@ -13,7 +13,7 @@ class MagicController extends Controller
 	 */
 	public function __construct()
 	{
-		$this->middleware('auth');
+		// $this->middleware('auth');
 	}
     
     /**
@@ -27,6 +27,6 @@ class MagicController extends Controller
      *
      */
     public function edit() {
-        return view('magic.edit', ['data' => array()]);
+        // return view('magic.edit', ['data' => array()]);
     }
 }
