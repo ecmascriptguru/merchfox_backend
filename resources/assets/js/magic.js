@@ -1,7 +1,7 @@
 'use strict';
 
 let Survey = (function() {
-    let _step = JSON.parse(localStorage._survey || "null") || "step_1",
+    let _step = JSON.parse(localStorage._survey_step || "null") || "step_1",
         _data = JSON.parse(localStorage._survey_data || "{}"),
 
         goToStep = (step) => {
@@ -17,7 +17,7 @@ let Survey = (function() {
                 if (target) {
                     goToStep(target);
                 } else {
-                    alert("Well done.");
+                    window.location.href = "https://www.upwork.com/fl/alexisr16";
                 }
             });
 

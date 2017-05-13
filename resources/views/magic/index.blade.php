@@ -6,12 +6,21 @@
         <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
             <div class="panel panel-default content-block" id="step_1" style="display:none;">
                 <div class="panel-heading">
-                    <h3>Step 1: Please answer to my questions</h3>
+                    <h3>Step 1: Please let me know something. It just saves your entry into local storage.</h3>
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
-                        <label for="step_1_param_1">What is full name?</label>
-                        <input type="text" class="form-control" id="step_1_param_1" />
+                        <label for="full_name">What is full name?</label>
+                        <input type="text" class="form-control" name="full_name" id="full_name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Where are you from?</label>
+                        <select type="text" class="form-control" name="location" id="location">
+                            <option value="usa">USA</option>
+                            <option value="canada">Canada</option>
+                            <option value="uk">UK</option>
+                            <option value="brazil">Brazil</option>
+                        </select>
                     </div>
                 </div>
                 <div class="panel-footer">
@@ -29,8 +38,15 @@
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
-                        <label for="step_2_param_1">What is full name?</label>
-                        <input type="text" class="form-control" id="step_2_param_1" />
+                        <label for="age">How old are you?</label>
+                        <input type="number" class="form-control" name="age" id="age" />
+                    </div>
+                    <div class="form-group">
+                        <label for="marriage">Are you single?</label>
+                        <select class="form-control" name="marriage" id="marriage">
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
                     </div>
                 </div>
                 <div class="panel-footer">
@@ -51,8 +67,22 @@
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
-                        <label for="step_3_param_1">What is full name?</label>
-                        <input type="text" class="form-control" id="step_3_param_1" />
+                        <label for="hours_per_week">How many hours a week?</label>
+                        <select class="form-control" name="hours_per_week" id="hours_per_week">
+                            <option value="10">Less than 10 hours</option>
+                            <option value="20">Less than 20 hours</option>
+                            <option value="30">Less than 30 hours</option>
+                            <option value="40">Less than 40 hours</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="when_to_start">When are you goint to start this project?</label>
+                        <select class="form-control" name="when_to_start" id="when_to_start">
+                            <option value="immediately">Immediately</option>
+                            <option value="week_1">In a week.</option>
+                            <option value="month_1">In a month.</option>
+                            <option value="not_sure">Not sure yet.</option>
+                        </select>
                     </div>
                 </div>
                 <div class="panel-footer">
@@ -73,8 +103,18 @@
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
-                        <label for="step_4_param_1">What is full name?</label>
-                        <input type="text" class="form-control" id="step_4_param_1" />
+                        <label for="like">Do you like this survey style?</label>
+                        <select class="form-control" name="like" id="like">
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="hire_me">Are you going to hire me?</label>
+                        <select class="form-control" name="hire_me" id="hire_me">
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
                     </div>
                 </div>
                 <div class="panel-footer">
