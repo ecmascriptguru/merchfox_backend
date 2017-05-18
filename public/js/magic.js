@@ -48,6 +48,12 @@ var Survey = function () {
         $("#output").text(JSON.stringify(_data, null, 4));
 
         goToStep(_step);
+
+        $(window).mouseleave(function (event) {
+            if (event.toElement == null) {
+                alert("Hey, don't leave me alone here.");
+            }
+        });
     };
 
     return {
