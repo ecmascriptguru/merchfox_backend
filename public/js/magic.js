@@ -49,11 +49,11 @@ var Survey = function () {
 
         goToStep(_step);
 
-        $(window).mouseleave(function (event) {
-            if (event.toElement == null) {
-                alert("Hey, don't leave me alone here.");
-            }
-        });
+        // $(window).mouseleave(function(event) {
+        //     if (event.toElement == null) {
+        //         alert("Hey, don't leave me alone here.");
+        //     }
+        // })
     };
 
     return {
